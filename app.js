@@ -17,6 +17,7 @@ app.use(express.static(`${__dirname}/src/public`));
 
 // bodyParser를 사용할 때 미들 웨어를 등록해줘야함
 app.use(bodyParser.json());
+
 // URL를 통해 전달되는 데이터에 한글, 공백 등과 같은 문자가 포함될 경우 제대로 인식되지 않는 문제 해결을 위한 코드
 app.use(bodyParser.urlencoded({extended: true}));
 

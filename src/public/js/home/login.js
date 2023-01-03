@@ -11,8 +11,7 @@ function login() {
         id: id.value,
         password: password.value,
     };
-    // console.log(req);
-    // console.log(JSON.stringify(req)); // 문자열로 감싸져있음
+    
     fetch("/login", {
         method: "POST",
         headers: {
@@ -22,10 +21,10 @@ function login() {
     })
       .then((res) => res.json())
       .then((res)=> {
-        if (res.success){
-            location.href = "/";
+        if (res.success){ // 로그인 성공하면
+            location.href = "/"; // 루트로 이동
         } else {
-            alert(res.msg);
+            alert(res.msg); // 실패하면 메시지 출력
         }
       })
       .catch((err) => {
