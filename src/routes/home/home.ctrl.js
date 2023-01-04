@@ -1,6 +1,5 @@
 "use strict";
 
-const UserStorage = require("../../models/UserStorage");
 const User = require("../../models/User");
 
 const output = {
@@ -18,26 +17,8 @@ const process = {
      login: (req, res) => {
         const user = new User(req.body);
         const response = user.login();
+
         return res.json(response);
-
-        // const id = req.body.id,
-        //   password = req.body.password;
-    
-        // const users = UserStorage.getUsers("id", "password");
-        
-        // // 아이디와 패스워드 검증
-        // const response = {};
-        // if (users.id.includes(id)) { // 프론트에서 전달한 id가 users id에 있으면
-        //     const idx = users.id.indexOf(id); // id index를 가져옴
-        //     if (users.password[idx] === password){
-        //         response.success = true;
-        //         return res.json();
-        //     }
-        // }
-
-        // response.success = false;
-        // response.msg = "로그인에 실패했습니다. "
-        // return res.json();
     },
 };
 
