@@ -26,10 +26,10 @@ class User {
     async register(){
         const client = this.body;
         try {
-            const response = UserStorage.save(client);
+            const response = await UserStorage.save(client);
             return response;
-        } catch (err) {
-            return { success: false, err};
+        } catch (err) { // 에러
+            return { success: false, msg: err};
         }
     }
 }
