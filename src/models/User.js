@@ -7,9 +7,10 @@ class User {
         this.body = body;
     }
 
-    login(){
+    // await을 쓰려면 비동기 함수로 변환
+    async login(){
         const client = this.body;
-        const {id, password} = UserStorage.getUserInfo(client.id);
+        const {id, password} = await UserStorage.getUserInfo(client.id);
 
         if (id) {
             if (id === client.id && password === client.password){
@@ -18,12 +19,18 @@ class User {
             return {success: false, msg: "비밀번호가 틀렸습니다. "};
         }
         return {success: false, msg: "존재하지 않는 아이디입니다. "};
+    } catch (err) {
+        return {success: false, err};
     }
 
-    register(){
+    async register(){
         const client = this.body;
-        const response = UserStorage.save(this.client);
-        return response;
+        try {
+            const response = UserStorage.save(client);
+            return response;
+        } catch (err) {
+            return { success: false, err};
+        }
     }
 }
 
