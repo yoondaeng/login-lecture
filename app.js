@@ -3,6 +3,10 @@
 // 모듈
 const express = require("express");
 const bodyParser = require("body-parser");
+// 어떤 os를 사용하더라도 환경변수 적용가능
+const dotenv = require("dotenv");
+dotenv.config();
+
 const app = express();
 
 // 라우팅
@@ -21,7 +25,7 @@ app.use(bodyParser.json());
 // URL를 통해 전달되는 데이터에 한글, 공백 등과 같은 문자가 포함될 경우 제대로 인식되지 않는 문제 해결을 위한 코드
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.use("/", home); // us: 미들 웨어를 등록해주는 메서드
+app.use("/", home); // use: 미들 웨어를 등록해주는 메서드
 
 // Cannot GET / 서버로 들어오기는 했는데 루트 경로를 찾을 수 없음
 
